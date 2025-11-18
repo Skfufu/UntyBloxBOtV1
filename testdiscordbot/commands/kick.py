@@ -5,28 +5,12 @@ import asyncio #note : from discord import Message, app_commands, user
 from discord.ext import commands
 import discord
 
-message_scp = ("!cmds", "!command", "!commande", "!cmd", "!tout les commande")
-
-class infoscommands(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-
-    @commands.Cog.listener()
-    async def on_message(self, message: discord.Message):
-        if message.author == self.bot.user:
-            return
-        
-        contenu = message.content.lower()
-
-        if contenu in message_scp:
-            await message.channel.send("**!cmds = donne les commande, !jeux_scp ou !jeuxscp ou !jeux.scp = donne la description et le lienx du jeux nom du jeux complé")
-
 class kickcommande(commands.cog):
     def __init__(self, bot):
         self.bot = bot
     
 @app_commands.command(name= "kick", description= "kick les personne")
-async def kick(self, interactions: discord.Interaction, user: discord.Member, time: int, raison: str = "aucune raison"):
+async def kick(self, interactions:, user: discord.Member, time: int, raison: str = "aucune raison"):
         await interactions.response.defter(epherale=True)
 
         has_permission = interactions.user.guild_permissions.kick_members
@@ -50,3 +34,4 @@ async def kick(self, interactions: discord.Interaction, user: discord.Member, ti
         
 
         
+
