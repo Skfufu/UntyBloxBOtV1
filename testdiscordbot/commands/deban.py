@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import User, app_commands
+from discord import User, app_commands, Interaction
 import discord
 
 class deBancommand(commands.Cog):
@@ -8,7 +8,7 @@ class deBancommand(commands.Cog):
 
 
     @app_commands.command(name="dban", description="dban les personne")
-    async def ban(self, interaction, user: discord.Member, raison: str = "aucune raisson"): 
+    async def ban(self, interaction: Interaction, user: discord.Member, raison: str = "aucune raisson"): 
         await interaction.response.defer(ephemeral=True)
 
 
@@ -24,5 +24,6 @@ class deBancommand(commands.Cog):
         except Exception as e:
 
             await interaction.response.response.send_message(f"{User} est imposible a bannire : {e}", ephemeral=True)
+
 
 
