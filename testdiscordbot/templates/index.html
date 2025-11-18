@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        button {
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #startbtn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+        }
+        #stopbtn {
+            background-color: #f44336; /* Red */
+            color: white;
+            border: none;
+        }
+        #restartbtn {
+            background-color: #008CBA; /* Blue */
+            color: white;
+            border: none;
+        }
+
+        #startbtn:hover {
+            background-color: #45a049;
+        }
+        #stopbtn:hover {
+            background-color: #da190b;
+        }
+        #restartbtn:hover {
+            background-color: #007bb5;
+        }
+
+        
+    </style>
+
+    <form action="/submit" method="post">
+        <button id="startbtn" name="action" value="start" type="submit">Démarrer</button>
+        <button id="stopbtn" name="action" value="stop" type="submit">Arrêter</button>
+        <button id="restartbtn" name="action" value="restart" type="submit">Redémarrer</button>
+    </form>
+</body>
+</html>
