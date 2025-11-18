@@ -10,7 +10,7 @@ class kickcommande(commands.cog):
         self.bot = bot
     
 @app_commands.command(name= "kick", description= "kick les personne")
-async def kick(self, interaction: Interaction user: discord.Member, time: int, raison: str = "aucune raison"):
+async def kick(self, interaction, user: discord.Member, time: int, raison: str = "aucune raison"):
         await interactions.response.defter(epherale=True)
 
         has_permission = interaction.user.guild_permissions.kick_members
@@ -34,6 +34,7 @@ async def kick(self, interaction: Interaction user: discord.Member, time: int, r
         
 
         
+
 
 
 
