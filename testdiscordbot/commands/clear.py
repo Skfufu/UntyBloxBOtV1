@@ -8,7 +8,7 @@ class ClearCommand(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name="clear", description="Supprime le nombre de messages spécifié")
-    async def clear(self, interaction:, number: int):
+    async def clear(self, interaction, number: int):
         await interaction.response.defer(ephemeral=True)
         
         has_permission = interaction.user.guild_permissions.manage_messages
@@ -22,4 +22,5 @@ class ClearCommand(commands.Cog):
         
         deleted = await interaction.channel.purge(limit=number)
         await interaction.followup.send(f"{len(deleted)} messages supprimés", ephemeral=True)
+
 
