@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import Interaction, InteractionResponse, User, app_commands
+from discord import User, app_commands
 import discord
 
 class deBancommand(commands.Cog):
@@ -22,4 +22,5 @@ class deBancommand(commands.Cog):
             await interaction.response.send_message(f"{user} a été debanni pour {raison}")
 
         except Exception as e:
+
             await interaction.response.response.send_message(f"{User} est imposible a bannire : {e}", ephemeral=True)
