@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import app_commands, InteractionResponded
+from discord import app_commands
 import discord
 import asyncio #note : from discord import Message, app_commands, user
 from discord.ext import commands
@@ -48,4 +48,5 @@ async def kick(self, interactions: discord.Interaction, user: discord.Member, ti
         except Exception as e:
              await interactions.response.send_message(f"{user} na pas pue etre exclue {e}")
         
+
         
