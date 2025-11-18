@@ -9,7 +9,7 @@ class MuetCommand(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name="muet", description="Mute un membre pour une durée donnée (en minutes).")
-    async def muet(self, interaction:, user: discord.Member, duree: int, raison: str = "aucune raison"):
+    async def muet(self, interaction, user: discord.Member, duree: int, raison: str = "aucune raison"):
         await interaction.response.defer(ephemeral=True)
 
         # Vérification des permissions
@@ -39,3 +39,4 @@ class MuetCommand(commands.Cog):
  
 
     
+
