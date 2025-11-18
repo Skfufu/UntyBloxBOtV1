@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import Interaction, InteractionResponse, User, app_commands
+from discord import User, app_commands
 import discord
 
 class Bancommand(commands.Cog):
@@ -23,4 +23,5 @@ async def ban(self, interaction: discord.Interaction, user: discord.Member, rais
         await interaction.response.send_message(f"{user} a été banni pour {raison}")
 
     except Exception as e:
+
         await interaction.response.response.send_message(f"{User} est imposible a bannire : {e}", ephemeral=True)
