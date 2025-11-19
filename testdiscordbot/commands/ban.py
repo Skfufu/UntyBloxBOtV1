@@ -8,7 +8,7 @@ class Bancommand(commands.Cog):
 
 
 @app_commands.command(name="ban", description="ban le personne")
-async def ban(self, interaction,  user: discord.Member, raison: str = "aucune raisson"): 
+async def ban(self, interaction: discord.Interaction,  user: discord.Member, raison: str = "aucune raisson"): 
     await interaction.response.defer(ephemeral=True)
 
 
@@ -25,6 +25,7 @@ async def ban(self, interaction,  user: discord.Member, raison: str = "aucune ra
     except Exception as e:
 
         await interaction.response.response.send_message(f"{User} est imposible a bannire : {e}", ephemeral=True)
+
 
 
 
