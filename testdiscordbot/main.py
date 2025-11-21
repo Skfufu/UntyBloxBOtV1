@@ -18,7 +18,7 @@ import os
 
 
 load_dotenv()
-token = os.getenv("DISCORD_BOT_TOKEN")
+token = os.getenv("tokene")
 prefix = os.getenv("DISCOR_COMMANDS_PREFIX")
 
 class Mybot(commands.Bot):
@@ -53,5 +53,6 @@ bot = Mybot()
 
 
 bot.run(token)
+
 
 
