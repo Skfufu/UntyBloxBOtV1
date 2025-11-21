@@ -1,18 +1,18 @@
 from dotenv import load_dotenv
 from discord.ext import commands
-from testdiscordbot.commands.ban import Bancommand
-from testdiscordbot.commands.clear import ClearCommand
-from testdiscordbot.commands.kick import kickcommande
-from testdiscordbot.Message.BlackList import blacklist
-from testdiscordbot.Message.jeux_scp import jeuxscp
-from testdiscordbot.Message.cmds_infos import infoscommands
-from testdiscordbot.Message.infosxeroze import xeroze
-from testdiscordbot.Message.mapper import mapper
-from testdiscordbot.Message.dev import dev
-from testdiscordbot.Message.lepoteaufeu import lepoteaufeu
-from testdiscordbot.commands.deban import deBancommand
-from testdiscordbot.alive import alive
-from testdiscordbot.commands.muet import MuetCommand
+from .commands.ban import Bancommand
+from .commands.clear import ClearCommand
+from .commands.kick import kickcommande
+from .Message.BlackList import blacklist
+from .Message.jeux_scp import jeuxscp
+from .Message.cmds_infos import infoscommands
+from .Message.infosxeroze import xeroze
+from .Message.mapper import mapper
+from .Message.dev import dev
+from .Message.lepoteaufeu import lepoteaufeu
+from .commands.deban import deBancommand
+from .alive import alive
+from .commands.muet import MuetCommand
 import discord
 import os
 
@@ -28,6 +28,7 @@ intents = discord.Intents.all()
 bot = MonBot(command_prefix="!", intents=intents)
 
 bot.run(token=token)
+
 
 
 
