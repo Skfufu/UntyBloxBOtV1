@@ -17,7 +17,7 @@ import discord
 import os
 
 
-token = "token"
+token = "tokendiscord"
 
 class MonBot(commands.Bot):
     async def setup_hook(self):
@@ -28,6 +28,7 @@ intents = discord.Intents.all()
 bot = MonBot(command_prefix="!", intents=intents)
 
 bot.run(token=token)
+
 
 
 
