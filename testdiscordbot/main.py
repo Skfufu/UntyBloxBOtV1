@@ -24,14 +24,15 @@ if token is None:
 class MonBot(commands.Bot):
     async def setup_hook(self):
         for extension in ['Bancommand', 'ClearCommand', 'kickcommande', 'infoscommands', 'xeroze', 'mapper', 'dev', 'lepoteaufeu', 'deBancommand', 'alive', 'MuetCommand']:
-            await self.load_extension(f'testdiscordbot.commands.{extension}')
-            await self.load_extension(f'testdiscordbot.Message.{extension}')
+            await self.load_extension(f'.commands.{extension}')
+            await self.load_extension(f'.Message.{extension}')
 
 
 intents = discord.Intents.all()
 bot = MonBot(command_prefix="!", intents=intents)
 
 bot.run(token=token)
+
 
 
 
