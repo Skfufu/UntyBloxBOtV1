@@ -17,7 +17,9 @@ import discord
 import os
 
 
-token = "tokendiscord"
+token = os.getenv("tokendiscord")
+if token is None:
+    raise ValueError("DISCORD_TOKEN n'est pas défini dans les variables d'environnement !")
 
 class MonBot(commands.Bot):
     async def setup_hook(self):
@@ -28,6 +30,7 @@ intents = discord.Intents.all()
 bot = MonBot(command_prefix="!", intents=intents)
 
 bot.run(token=token)
+
 
 
 
