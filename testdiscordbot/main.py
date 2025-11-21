@@ -1,39 +1,38 @@
-from dotenv import load_dotenv
-from discord.ext import commands
-from .commands.ban import Bancommand
-from .commands.clear import ClearCommand
-from .commands.kick import kickcommande
-from .Message.BlackList import blacklist
-from .Message.jeux_scp import jeuxscp
-from .Message.cmds_infos import infoscommands
-from .Message.infosxeroze import xeroze
-from .Message.mapper import mapper
-from .Message.dev import dev
-from .Message.lepoteaufeu import lepoteaufeu
-from .commands.deban import deBancommand
-from .alive import alive
-from .commands.muet import MuetCommand
-import discord
 import os
+from dotenv import load_dotenv
+import discord
+from discord.ext import commands
 
-
+# Charger les variables d'environnement depuis le .env
+load_dotenv()
 token = os.getenv("tokendiscord")
 if token is None:
-    raise ValueError("DISCORD_TOKEN n'est pas défini dans les variables d'environnement !")
+    raise ValueError("tokendiscord n'est pas défini dans les variables d'environnement !")
 
+# Définir les extensions à charger
+COMMAND_EXTENSIONS = ['Bancommand', 'ClearCommand', 'kickcommande', 'deBancommand', 'MuetCommand']
+MESSAGE_EXTENSIONS = ['infoscommands', 'xeroze', 'mapper', 'dev', 'lepoteaufeu', 'alive']
+
+# Création du bot
 class MonBot(commands.Bot):
+    def __init__(self):
+        intents = discord.Intents.all()
+        super().__init__(command_prefix="!", intents=intents)
+
     async def setup_hook(self):
-        for extension in ['Bancommand', 'ClearCommand', 'kickcommande', 'infoscommands', 'xeroze', 'mapper', 'dev', 'lepoteaufeu', 'deBancommand', 'alive', 'MuetCommand']:
-            await self.load_extension(f'commands.{extension}')
-            await self.load_extension(f'Message.{extension}')
+        # Charger les extensions du dossier commands
+        for ext in COMMAND_EXTENSIONS:
+            await self.load_extension(f'testdiscordbot.commands.{ext}')
 
+        # Charger les extensions du dossier Message
+        for ext in MESSAGE_EXTENSIONS:
+            await self.load_extension(f'testdiscordbot.Message.{ext}')
 
-intents = discord.Intents.all()
-bot = MonBot(command_prefix="!", intents=intents)
+# Instancier le bot
+bot = MonBot()
 
-bot.run(token=token)
-
-
+# Lancer le bot
+bot.run(token)
 
 
 
