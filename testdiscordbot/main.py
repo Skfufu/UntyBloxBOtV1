@@ -1,58 +1,33 @@
 from dotenv import load_dotenv
 from discord.ext import commands
-from commands.ban import Bancommand
-from commands.clear import ClearCommand
-from commands.kick import kickcommande
-from Message.BlackList import blacklist
-from Message.jeux_scp import jeuxscp
-from Message.cmds_infos import infoscommands
-from Message.infosxeroze import xeroze
-from Message.mapper import mapper
-from Message.dev import dev
-from Message.lepoteaufeu import lepoteaufeu
-from commands.deban import deBancommand
-from alive import alive
-from commands.muet import MuetCommand
+from testdiscordbot.commands.ban import Bancommand
+from testdiscordbot.commands.clear import ClearCommand
+from testdiscordbot.commands.kick import kickcommande
+from testdiscordbot.Message.BlackList import blacklist
+from testdiscordbot.Message.jeux_scp import jeuxscp
+from testdiscordbot.Message.cmds_infos import infoscommands
+from testdiscordbot.Message.infosxeroze import xeroze
+from testdiscordbot.Message.mapper import mapper
+from testdiscordbot.Message.dev import dev
+from testdiscordbot.Message.lepoteaufeu import lepoteaufeu
+from testdiscordbot.commands.deban import deBancommand
+from testdiscordbot.alive import alive
+from testdiscordbot.commands.muet import MuetCommand
 import discord
 import os
 
 
-load_dotenv()
-token = os.getenv("tokene")
-prefix = os.getenv("DISCOR_COMMANDS_PREFIX")
+token = "token"
 
-class Mybot(commands.Bot):
-    def __init__(self):
-        intents = discord.Intents.all()
-        super().__init__(command_prefix=prefix, intents=intents)
-    
+class MonBot(commands.Bot):
     async def setup_hook(self):
-        await self.add_cog(ClearCommand)
-        await bot.add_cog(Bancommand)
-        await bot.add_cog(kickcommande)
-        await self.add_cog(blacklist)
-        await self.add_cog(jeuxscp)
-        await self.add_cog(infoscommands)
-        await self.add_cog(xeroze)
-        await self.add_cog(mapper)
-        await self.add_cog(dev)
-        await self.add_cog(lepoteaufeu)
-        await self.add_cog(deBancommand)
-        await self.add_cog(MuetCommand)
-        await self.tree.sync()
+        for extension in ['Bancommand', 'ClearCommand', 'kickcommande', 'infoscommands', 'xeroze', 'mapper', 'dev', 'lepoteaufeu', 'deBancommand', 'alive', 'MuetCommand']:
+            await self.load_extension(f'cogs.{extension}')
 
-    
-    async def on_ready(self):
-        print(f'Bot connecté sur {self.user} (ID: {self.user.id})')
-        print('------')
+intents = discord.Intents.all()
+bot = MonBot(command_prefix="!", intents=intents)
 
-
-alive()
-
-bot = Mybot()
-
-
-bot.run(token)
+bot.run(token=token)
 
 
 
